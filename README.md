@@ -31,9 +31,9 @@ browser
         for (let i = 0; i < 10; i++) {
             tree.insert(i);
         }
-        console.log(tree.getKeys());
+        console.log(tree.keys());
         tree.find(5);
-        console.log(tree.getKeys());
+        console.log(tree.keys());
     </script>
 </head>
 ```
@@ -45,3 +45,4 @@ browser
 * `tree.find(key: any):Boolean` - Find item, return result, reshapes the tree so that finding node is rooted
 * `tree.remove(key: any):Boolean` - Remove item, return result, reshapes the tree so that finding node is rooted
 * `tree.findKth(k: Integer):Boolean` - Find Kth item, return result, reshapes the tree so that finding node is rooted
+* `tree.keys(order: Integer):Array<key: any>` - Get Keys by order (0: preorder, 1: inorder, 2: postorder)

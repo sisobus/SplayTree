@@ -8,7 +8,7 @@ describe ("insert", () => {
     for (let i = 0; i < 10; i++) {
       tree.insert(i);
     }
-    assert.equal(tree._size, 10);
+    assert.equal(tree.size, 10);
   });
 
   it ('should return the inserted pointer', () => {
@@ -28,7 +28,7 @@ describe ("insert", () => {
     tree.insert(1);
     tree.insert(1);
     tree.insert(2);
-    assert.equal(tree._size, 2);
+    assert.equal(tree.size, 2);
   });
 
   it ('should return the inserted pointer', () => {

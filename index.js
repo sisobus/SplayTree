@@ -5,6 +5,7 @@ class Node {
     this.left = null;
     this.right = null;
     this.parent = null;
+    this.cnt = 0;
   }
 }
 
@@ -13,6 +14,17 @@ export class SplayTree {
     this.comparator = comparator;
     this._root = null;
     this._size = 0;
+  }
+  get root() {
+    return this._root;
+  }
+  get size() {
+    return this._size;
+  }
+  update (x) {
+    x.cnt = 1;
+    if (x.left) x.cnt += x.left.cnt;
+    if (x.right) x.cnt += x.right.cnt;
   }
   rotate (root, x) {
     let p = x.parent;
@@ -38,6 +50,8 @@ export class SplayTree {
     } else {
       root = x;
     }
+    this.update(p);
+    this.update(x);
     return root;
   }
   splay (root, x) {
@@ -87,22 +101,32 @@ export class SplayTree {
   }
   find (key) {
     let p = this._root;
-    let lp = p;
     if (!p) return false;
     while (p) {
       if (this.comparator(key, p.key) === 0) break;
       if (this.comparator(key, p.key) < 0) {
         if (!p.left) break;
-        lp = p;
         p = p.left;
       } else {
         if (!p.right) break;
-        lp = p;
         p = p.right;
       }
     }
     this._root = this.splay(this._root, p);
     return this.comparator(key, p.key) === 0;
+  }
+  findKth (k) {
+    if (k >= this._size) return false;
+    let p = this._root;
+    let TRUE = true;
+    while (TRUE) {
+      while (p.left && p.left.cnt > k) p = p.left;
+      if (p.left) k -= p.left.cnt;
+      if (!(k--)) break;
+      p = p.right;
+    }
+    this._root = this.splay(this._root, p);
+    return true;
   }
   remove (key) {
     if (!this.find(key)) return false;

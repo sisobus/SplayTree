@@ -1,5 +1,5 @@
 {
-  "name": "SplayTree",
+  "name": "splaytreejs",
   "version": "1.0.0",
   "main": "dist/index.js",
   "browser": "dist/splaytree.min.js",

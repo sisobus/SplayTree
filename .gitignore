@@ -10,7 +10,6 @@ db_repository/*
 app.db
 static/build/js/script.js
 static/build/css/style.css
-dist/*
 static/result/*
 migrations/*
 *.lock

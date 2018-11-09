@@ -1,0 +1,18 @@
+<html>
+<head>
+    <script src="../dist/splaytree.min.js"></script>
+    <script>
+        const {SplayTree} = splaytree;
+        let tree = new SplayTree();
+
+        for (let i = 0; i < 10; i++) {
+            tree.insert(i);
+        }
+        console.log(tree.getKeys());
+        tree.find(5);
+        console.log(tree.getKeys());
+    </script>
+</head>
+<body>
+</body>
+</html>

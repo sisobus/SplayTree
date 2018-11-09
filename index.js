@@ -87,22 +87,22 @@ export class SplayTree {
   }
   find (key) {
     let p = this._root;
+    let lp = p;
     if (!p) return false;
     while (p) {
       if (this.comparator(key, p.key) === 0) break;
       if (this.comparator(key, p.key) < 0) {
         if (!p.left) break;
+        lp = p;
         p = p.left;
       } else {
         if (!p.right) break;
+        lp = p;
         p = p.right;
       }
     }
-    if (this.comparator(key, p.key) === 0) {
-      this._root = this.splay(this._root, p);
-      return true;
-    } 
-    return false;
+    this._root = this.splay(this._root, p);
+    return this.comparator(key, p.key) === 0;
   }
   remove (key) {
     if (!this.find(key)) return false;
@@ -116,23 +116,24 @@ export class SplayTree {
         x.right = p.right;
         p.right.parent = x;
         p = null;
-        return;
+        return true;
       }
       this._root = p.left;
       this._root.parent = null;
       p = null;
-      return ;
+      return true;
     }
     if (p.right) {
       this._root = p.right;
       this._root.parent = null;
       p = null;
-      return ;
+      return true;
     }
     p = null;
     this._root = null;
+    return true;
   }
-  getKeys (order = 0) {
+  keys (order = 0) {
     /*
      * order 0: preOrder
      * order 1: inOrder

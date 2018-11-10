@@ -1,4 +1,4 @@
-# Splay tree ![npm version](https://badge.fury.io/js/splaytreejs.svg)
+# Splay tree ![npm version](https://badge.fury.io/js/splaytreejs.svg) [![Build Status](https://travis-ci.org/sisobus/SplayTree.svg?branch=master)](https://travis-ci.org/sisobus/SplayTree)
 
 Lightweight [Splay tree](https://www.cs.cmu.edu/~sleator/papers/self-adjusting.pdf) javascript library for node, browser
 

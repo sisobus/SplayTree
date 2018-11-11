@@ -2,9 +2,9 @@ import { assert } from "chai";
 
 import { SplayTree } from "../index";
 
-describe ("300k data set", () => {
+describe ("100k data set", () => {
   const RandInt = (MOD=1e+9) => Math.random()*(MOD)|0;
-  const n = 3e+5, m = 1e+2;
+  const n = 1e+5, m = 1e+2;
   let dataset = [], fdataset = [];
   for (let i = 0; i < n; i++) {
     dataset.push(RandInt());

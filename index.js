@@ -135,6 +135,13 @@ export class SplayTree {
     this._size += tree.size;
     return tree.root;
   }
+  _load(keys, datas) {
+    for (let i = 0; i < keys.length; i++) {
+      this.insert(keys[i], datas[i]);
+    }
+  }
+  load (keys, datas, nThreads = 10) {
+  }
   find (key) {
     let p = this._root;
     if (!p) return false;

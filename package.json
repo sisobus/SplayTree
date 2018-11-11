@@ -21,12 +21,19 @@
     "@babel/core": "^7.1.5",
     "@babel/preset-env": "^7.1.5",
     "@babel/register": "^7.0.0",
+    "babel-polyfill": "^6.26.0",
     "chai": "^4.2.0",
     "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-uglify": "^6.0.0"
+    "rollup-plugin-uglify": "^6.0.0",
+    "workly": "^1.0.1"
   },
   "description": "Lightweight Splay tree javascript library for node, browser",
   "keywords": [
-    "splaytree", "bst", "splay", "lightweight", "index", "indexing"
+    "splaytree",
+    "bst",
+    "splay",
+    "lightweight",
+    "index",
+    "indexing"
   ]
 }

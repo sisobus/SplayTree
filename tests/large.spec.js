@@ -49,8 +49,13 @@ describe ("100k data set", () => {
     assert.equal(tree.size, n);
   });
 
-  it ('bulk load with multi thread time check', () => {
+  it ('bulk load', () => {
     const tree = new SplayTree();
-    tree.load(dataset, dataset);
+    tree.load(dataset);
+
+    for (let i = 0; i < m; i++) {
+      tree.find(fdataset[i]);
+    }
+    assert.equal(tree.size, n);
   });
 });

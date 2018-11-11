@@ -135,7 +135,26 @@ export class SplayTree {
     this._size += tree.size;
     return tree.root;
   }
-  load (keys, datas, nThreads = 5) {
+  load (keys, datas, nTrees = 100) {
+    const n = keys.length;
+    if (!datas || n !== datas.length) {
+      datas = [];
+      for (let i = 0; i < n; i++) {
+        datas.push({});
+      }
+    }
+    const alloc = n / nTrees | 0;
+    const trees = [];
+    for (let i = 0; i < nTrees; i++) {
+      trees.push(new SplayTree());
+      for (let j = 0; j < alloc; j++) {
+        trees[i].insert(keys[i*alloc+j], datas[i*alloc+j]);
+      }
+      this.merge(trees[i]);
+    }
+    for (let j = nTrees * alloc; j < n; j++) {
+      this.insert(keys[j], datas[j]);
+    }
   }
   find (key) {
     let p = this._root;

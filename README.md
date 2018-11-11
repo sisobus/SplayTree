@@ -40,8 +40,8 @@ browser
 
 ## API
 
-* `new SplayTree([comparator])`, where `comparator` is optional comparison function
-* `tree.insert(key: any, data: any):Node` - Insert item, not allowed duplicate keys
+* `new SplayTree([duplicate=true, comparator])`, where `comparator` is optional comparison function and `duplicate` is optional allow duplicate key (default is true)
+* `tree.insert(key: any, data: any):Node` - Insert item
 * `tree.find(key: any):Boolean` - Find item, return result, reshapes the tree so that finding node is rooted
 * `tree.remove(key: any):Boolean` - Remove item, return result, reshapes the tree so that finding node is rooted
 * `tree.findKth(k: Integer):Boolean` - Find Kth item, return result, reshapes the tree so that finding node is rooted

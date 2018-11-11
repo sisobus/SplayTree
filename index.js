@@ -10,8 +10,9 @@ class Node {
 }
 
 export class SplayTree {
-  constructor (comparator = (a, b) => a > b ? 1 : a < b ? -1 : 0) {
+  constructor (duplicate = true, comparator = (a, b) => a > b ? 1 : a < b ? -1 : 0) {
     this.comparator = comparator;
+    this.duplicate = duplicate;
     this._root = null;
     this._size = 0;
   }
@@ -74,8 +75,7 @@ export class SplayTree {
     }
     const TRUE = true;
     while (TRUE) {
-      if (key === p.key) return;
-      if (this.comparator(key, p.key) === 0) return x;
+      if (!this.duplicate && this.comparator(key, p.key) === 0) return x;
       if (this.comparator(key, p.key) < 0) {
         if (!p.left) {
           x = new Node(key, data);
@@ -98,6 +98,42 @@ export class SplayTree {
     }
     this._size++;
     return x;
+  }
+  merge (tree) {
+    let p = this._root;
+    if (!p && !tree.root) {
+      return null;
+    }
+    if (!tree.root) {
+      return p;
+    }
+    if (!p) {
+      this._root = tree.root;
+      this._size = tree.size;
+      return this._root;
+    }
+    const TRUE = true;
+    while (TRUE) {
+      if (this.comparator(tree.root.key, p.key) < 0) {
+        if (!p.left) {
+          p.left = tree.root;
+          tree.root.parent = p;
+          this._root = this.splay(this._root, tree.root);
+          break;
+        }
+        p = p.left;
+      } else {
+        if (!p.right) {
+          p.right = tree.root;
+          tree.root.parent = p;
+          this._root = this.splay(this._root, tree.root);
+          break;
+        }
+        p = p.right;
+      }
+    }
+    this._size += tree.size;
+    return tree.root;
   }
   find (key) {
     let p = this._root;

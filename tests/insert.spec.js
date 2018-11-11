@@ -22,7 +22,7 @@ describe ("insert", () => {
   });
 
   it ('should return the null because of duplicated key', () => {
-    const tree = new SplayTree();
+    const tree = new SplayTree(false);
     tree.insert(1);
     tree.insert(1);
     tree.insert(1);
@@ -53,6 +53,34 @@ describe ("insert", () => {
      *    1      
      *     \
      *      2
+     */
+  });
+
+  it ('should return the inserted pointer (allow duplicated key)', () => {
+    const tree = new SplayTree();
+    let l = [3, 2, 1, 5, 8, 4, 11, 6, 5, 4, 11, 3];
+    for (let i = 0; i < l.length; i++) {
+      tree.insert(l[i]);
+    }
+    let expected = [3, 3, 1, 2, 11, 4, 4, 5, 5, 11, 6, 8];
+    assert.equal(tree.keys().toString(), expected.toString());
+    /*
+     * input: 3 2 1 5 8 4 11 6
+     * tree shape
+     *        
+     *             3 
+     *          /    \
+     *         3      11 
+     *        /       /
+     *       1       4
+     *        \     / \
+     *         2   4   5
+     *                / \
+     *               5   11
+     *                   /
+     *                  6 
+     *                   \ 
+     *                    8
      */
   });
 });

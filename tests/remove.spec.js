@@ -19,6 +19,23 @@ describe ("remove", () => {
     assert.equal(output.toString(), expected.toString());
   });
 
+  it ('should be size is zero when all node is removed', () => {
+    const tree = new SplayTree();
+    let l = [3, 2, 1, 5, 8, 4, 11, 6];
+    for (let i = 0; i < l.length; i++) {
+      tree.insert(l[i]);
+    }
+    const input = [5, 1, 2, 3, 4, 8, 11, 6, 7];
+    const expected = [7, 6, 5, 4, 3, 2, 1, 0, 0];
+    const output = [];
+
+    for (let i = 0; i < input.length; i++) {
+      tree.remove(input[i]);
+      output.push(tree.size);
+    }
+    assert.equal(output.toString(), expected.toString());
+  });
+
   it ('should maintain shape of Splay Tree', () => {
     const tree = new SplayTree();
     let l = [3, 2, 1, 5, 8, 4, 11, 6];

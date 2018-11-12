@@ -1,6 +1,6 @@
 {
   "name": "splaytreejs",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "browser": "dist/splaytree.min.js",
   "repository": "https://github.com/sisobus/SplayTree.git",

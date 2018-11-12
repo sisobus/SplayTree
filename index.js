@@ -197,21 +197,25 @@ export class SplayTree {
         x.right = p.right;
         p.right.parent = x;
         p = null;
+        this._size--;
         return true;
       }
       this._root = p.left;
       this._root.parent = null;
       p = null;
+      this._size--;
       return true;
     }
     if (p.right) {
       this._root = p.right;
       this._root.parent = null;
       p = null;
+      this._size--;
       return true;
     }
     p = null;
     this._root = null;
+    this._size = 0;
     return true;
   }
   clear() {

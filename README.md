@@ -46,5 +46,6 @@ browser
 * `tree.remove(key: any):Boolean` - Remove item, return result, reshapes the tree so that finding node is rooted
 * `tree.findKth(k: Integer):Boolean` - Find Kth item, return result, reshapes the tree so that finding node is rooted
 * `tree.keys(order: Integer):Array<key: any>` - Get Keys by order (0: preorder, 1: inorder, 2: postorder)
-* `tree.merge(tree: SplayTree):Node` - merge this tree and argument tree
+* `tree.merge(tree: SplayTree):Node` - Merge this tree and argument tree
 * `tree.load(Array<key: any>, Array<data: any>, nTrees: Integer):None` - Load Array of keys and datas, if datas is null or keys.length is not equal datas.length then set default ([{} for keys.length])
+* `tree.clear():SplayTree` - Clear tree

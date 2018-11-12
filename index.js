@@ -214,6 +214,11 @@ export class SplayTree {
     this._root = null;
     return true;
   }
+  clear() {
+    this._root = null;
+    this._size = 0;
+    return this;
+  }
   keys (order = 0) {
     /*
      * order 0: preOrder
